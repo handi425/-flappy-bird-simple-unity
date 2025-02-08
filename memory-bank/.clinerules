@@ -1,0 +1,84 @@
+# Project Rules & Patterns
+
+## Code Style Guidelines
+
+### 1. Naming Conventions
+- PascalCase untuk nama class dan methods
+- camelCase untuk variables
+- Prefix _ untuk private fields
+- Gunakan nama yang deskriptif dalam Bahasa Indonesia untuk comments
+
+### 2. Script Organization
+- Group related variables di bagian atas class
+- Pisahkan public dan private methods
+- Gunakan region jika diperlukan untuk organization
+- Letakkan initialization code di Start/Awake
+
+### 3. UI Management
+- Main menu selalu aktif saat startup
+- Gameplay UI non-aktif sampai game dimulai
+- Win panel hanya aktif saat game over
+
+## Project Patterns
+
+### 1. Scene Organization
+- GameManager object untuk control utama
+- PipeSpawner di sisi kanan viewport
+- Player di posisi awal center-left
+- Ground di bagian bawah scene
+
+### 2. Prefab Structure
+Pipe prefab harus memiliki:
+- Parent object dengan Pipe script
+- Child objects untuk pipa atas dan bawah
+- Trigger collider untuk scoring
+- Coin object (optional)
+
+### 3. Component Setup
+Player object requirements:
+- Rigidbody (non-kinematic)
+- Sphere Collider
+- PlayerController script
+
+## Critical Values
+
+### 1. Physics Settings
+```
+jumpForce: 5f
+rotationSpeed: 10f
+moveSpeed: 5f
+spawnInterval: 2f
+```
+
+### 2. Object Positions
+```
+Player start: (0, 0, 0)
+PipeSpawner: (10, 0, 0)
+Ground: (0, -5, 0)
+```
+
+## Workflow Rules
+
+### 1. Script Updates
+- Test setiap perubahan di scene
+- Verify references di inspector
+- Update documentation jika ada perubahan major
+
+### 2. Scene Changes
+- Save scene setelah setiap major change
+- Test gameplay setelah object repositioning
+- Verify semua connections setelah prefab updates
+
+### 3. Testing Protocol
+1. Test main menu interaction
+2. Verify player physics
+3. Check coin collection
+4. Validate scoring system
+5. Confirm game over state
+6. Test restart functionality
+
+## Maintenance Notes
+- Regularly check object pool efficiency
+- Monitor physics performance
+- Update difficulty balance sesuai testing
+- Maintain clean scene hierarchy
